@@ -21,8 +21,20 @@ function Homepage() {
               <div className={Styles.employeesContainer}>EMPLOYEES</div>
             </Link>
           </div>
-          <h1>Home Page</h1>
-          <div></div>
+          <div className={Styles.boxNavContainer}>
+            <Link
+              to="/tasks"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className={Styles.taskContainerBox}>TASKS</div>
+            </Link>
+            <Link
+              to="/employees"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className={Styles.employeesContainerBox}>EMPLOYEES</div>
+            </Link>
+          </div>
         </div>
       </div>
     </>

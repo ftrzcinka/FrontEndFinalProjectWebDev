@@ -36,6 +36,7 @@
   align-items: center;
   background-color: #a7e53d;
   border-style: solid;
+  font-family: sans-serif;
 }
 
 .taskContainer:hover {
@@ -50,13 +51,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   background-color: #a7e53d;
   border-style: solid;
+  font-family: sans-serif;
 }
 
 .employeesContainer:hover {
-  transform: scale(1.2);
-  background-color: rgb(192, 4, 192);
+  animation: pulse 1s infinite ease-in-out;
   cursor: pointer;
+}
+
+.boxNavContainer {
+  width: 100vw;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.taskContainerBox {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(5, 218, 255);
+  margin: 0px 50px 0px 0px;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-family: sans-serif;
+}
+.employeesContainerBox {
+  height: 400px;
+  width: 600px;
+  background-color: rgb(5, 218, 255);
+  margin: 0px 0px 0px 50px;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-family: sans-serif;
 }
