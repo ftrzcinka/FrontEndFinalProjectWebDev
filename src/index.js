@@ -6,6 +6,7 @@ import Homepage from "./pages/homepage";
 import Taskpage from "./pages/taskpage";
 import Employeepage from "./pages/employeepage";
 
+
 // Add an object to the array for more routes
 const router = createBrowserRouter([
   { path: "/", element: <Homepage /> },
