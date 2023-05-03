@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 
@@ -16,6 +16,19 @@ const TaskInfo = ({
 }
 
 function Taskpage() {
+
+  const [task, setTask] = useState([]);
+
+
+  useEffect(() => {
+    const fetchTask = async() => {
+      const response = await fetch ('/source')
+      const data = await response.json();
+      setTask(data);
+    }
+  })
+
+  
   return (
     <>
     <div>
@@ -25,8 +38,20 @@ function Taskpage() {
       </div>
     </div>
 
-    <div>
+    <div className="Task-List">
       <h1>Task Page</h1>
+      {task.length ? (task.map((task) => (
+        <TaskInfo
+          key={task.id}
+          Description= {task.Description}
+          Priority= {task.Priority} 
+          CompletionStatus= {task.CompletionStatus}
+          Employee= {task.Employee}
+          />
+      ))
+      ): (
+        <h3>No Tasks</h3>
+      )}
     </div>
     </>
   );

@@ -75,15 +75,20 @@ function Employeepage() {
           </div>
         )}
         <div className="Employee-List">
-          {employees.map((employee) => (
+          {employees.length? (employees.map((employee) => (
+            <div>
             <Employee
               key = {employee.id}
               Name = {employee.FName}
               Title= {employee.LName}
               Department ={employee.Department}
             />
-          ))}
-          <button>Delete</button>
+            <button>Delete</button>
+            </div>
+          ))
+          ):(
+            <h3>No Employees</h3>
+          )}
         </div>
       </div>
     </>
