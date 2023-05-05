@@ -18,6 +18,12 @@ const TaskInfo = ({
 function Taskpage() {
 
   const [task, setTask] = useState([]);
+  const [modal, setModal] = useState(false);
+
+
+  const toggleModal = () => {
+    setModal(!modal);
+  }
 
 
   useEffect(() => {
@@ -37,7 +43,27 @@ function Taskpage() {
           <Link style={{ textDecoration: "none", color: "black" }} to='/employees' className={Styles.employeeContainer}>EMPLOYEES</Link>
       </div>
     </div>
-
+    <button onClick={toggleModal}>Create a Task</button>
+    {modal && (
+      <div className={Styles.createTaskModal}>
+        <header>
+          <h2>Create a Task</h2>
+        </header>
+        <body>
+          <form>
+            <label>Description:<input type="text" name="Description"></input></label>
+            <br></br>
+            <label>Priority:<input type="text" name="Priority"></input></label>
+            <br></br>
+            <label>Completion Status:<input type="text" name="Status" placeholder="New"></input></label>
+            <br></br>
+            <label>Employee:<input type="text" name="Employee"></input></label>
+            <br></br>
+            <input type="submit" value='Create'></input>
+          </form>
+        </body>
+      </div>
+    )}
     <div className="Task-List">
       <h1>Task Page</h1>
       {task.length ? (task.map((task) => (
