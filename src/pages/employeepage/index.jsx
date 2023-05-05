@@ -4,16 +4,8 @@ import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import EmployeeAPI from "./api";
+import EmployeeCard from "../../components/EmployeeCard";
 
-const Employee = ({ FName, LName, Department }) => {
-  return (
-    <div className="Employee">
-      {FName}
-      {LName}
-      {Department}
-    </div>
-  );
-};
 
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
@@ -26,18 +18,13 @@ function Employeepage() {
     setModal(!modal);
   };
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5001/employee/all").then((response) => {
-  //     setEmployees(response.data);
-  //   });
-  // });
-  async function updateEmployees() {
+  const refreshEmployees = async () => {
     const allEmployees = await EmployeeAPI.getAllEmployees();
     setEmployees(allEmployees);
-  }
+  };
 
   useEffect(() => {
-    updateEmployees();
+    refreshEmployees();
   }, []);
 
   //probably need to reorganize the output here- create new employee button might be a modal
@@ -97,7 +84,7 @@ function Employeepage() {
                       lastName,
                       department
                     );
-                    updateEmployees();
+                    refreshEmployees();
                   }}
                 >
                   Submit
@@ -107,22 +94,24 @@ function Employeepage() {
           </div>
         </div>
       )}
-      <Button onClick={() => updateEmployees()}>get All Employees</Button>
+      <Button onClick={() => refreshEmployees()}>get All Employees</Button>
 
-      <div className="Employee-List">
+      <div className={Styles.employeeList}>
         {employees.length ? (
           employees.map((employee) => {
             return (
               <div key={employee.id}>
-                <Employee
-                  FName={employee.firstname}
-                  LName={employee.lastname}
-                  Department={employee.department}
+                <EmployeeCard
+                  id={employee.id}
+                  firstName={employee.firstname}
+                  lastName={employee.lastname}
+                  department={employee.department}
+                  refreshEmployees={refreshEmployees}
                 />
                 <button
                   onClick={async () => {
                     await EmployeeAPI.deleteEmployee(employee.id);
-                    updateEmployees();
+                    refreshEmployees();
                   }}
                 >
                   Delete

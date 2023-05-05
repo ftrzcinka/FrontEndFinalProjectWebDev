@@ -38,10 +38,22 @@ async function deleteEmployee(id) {
     });
 }
 
+async function updateEmployee(id, updatedFields) {
+  return axios
+  .put(`http://localhost:5000/employee/${id}`, updatedFields)
+  .then((response) => {
+    console.log("Updated employee");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
 const EmployeeAPI = {
   getAllEmployees,
   deleteEmployee,
   createEmployee,
+  updateEmployee,
 };
 
 export default EmployeeAPI;
