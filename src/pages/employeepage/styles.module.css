@@ -46,3 +46,9 @@
     border-width: 4px;
     border-color: lime;
   }
+  
+  .employeeList{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+  }
