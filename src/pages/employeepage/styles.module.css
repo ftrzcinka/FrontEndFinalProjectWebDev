@@ -5,6 +5,9 @@
     justify-content: center;
     background-color: rgb(255, 140, 0);
     border-bottom-style: solid;
+    position: fixed;
+    top:0;
+    z-index: 2;
   }
 
   .taskContainer {
@@ -49,6 +52,7 @@
   
   .employeeList{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap:1rem;
+    margin-top: 100px;
   }
