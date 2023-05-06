@@ -40,9 +40,14 @@
     animation: pulse 1s infinite ease-in-out;
     cursor: pointer;
   }
-  
 
   .createEmployeeModal {
     border-width: 4px;
     border-color: lime;
+  }
+
+  .taskList{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }

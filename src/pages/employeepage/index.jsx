@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import EmployeeAPI from "./api";
 import EmployeeCard from "../../components/EmployeeCard";
 
-
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -49,7 +48,9 @@ function Employeepage() {
           TASKS
         </Link>
       </div>
-      <button onClick={toggleModal}>Create New Employee</button>
+      <button onClick={toggleModal} style={{ marginTop: "120px" }}>
+        Create New Employee
+      </button>
       {modal && (
         <div className={Styles.createEmployeeModal}>
           <div>
