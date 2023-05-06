@@ -57,7 +57,16 @@ async function updateTask(id, updatedFields) {
 
 async function assignTask() {}
 
-async function unassignTask() {}
+async function unassignTask(id) {
+  return axios
+    .put(`http://localhost:5000/task/unassign/${id}`)
+    .then((response) => {
+      console.log("Task unassigned");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 const TaskAPI = {
   createTask,

@@ -21,7 +21,7 @@ function TaskCard(props) {
   const [taskDescription, setTaskDescription] = useState(props.taskDescription);
   const [taskPriority, setTaskPriority] = useState(props.taskPriority);
   const [taskCompleted, setTaskCompleted] = useState(props.taskCompleted);
-  const [taskEmployeeId, setTaskEmployeeId] = useState(props.employeeId);
+  const [taskEmployeeId, setTaskEmployeeId] = useState(props.taskEmployeeId);
   const [editMode, setEditMode] = useState(false);
 
   function editModeOn() {
@@ -32,12 +32,19 @@ function TaskCard(props) {
     setTaskDescription(props.taskDescription);
     setTaskPriority(props.taskPriority);
     setTaskCompleted(props.taskCompleted);
-    setTaskEmployeeId(props.employeeId);
+    setTaskEmployeeId(props.taskEmployeeId);
   }
 
   return (
     <div style={classes.cardContainer}>
-      <div style={{ position: "absolute", top: "0.25rem", right: "0.25rem", zIndex: 1,}}>
+      <div
+        style={{
+          position: "absolute",
+          top: "0.25rem",
+          right: "0.25rem",
+          zIndex: 1,
+        }}
+      >
         <IconButton style={{ padding: "0.25rem" }}>
           {editMode ? (
             <ClearIcon
@@ -59,8 +66,14 @@ function TaskCard(props) {
                 completed: taskCompleted,
                 employeeId: taskEmployeeId,
               };
-              await TaskAPI.updateTask(props.id, updatedFields);
-              props.refreshTasks();
+              const employee = await EmployeeAPI.findEmployee(taskEmployeeId);
+              if (!employee) {
+                editModeOff();
+                alert("Invalid Emp ID");
+              } else {
+                await TaskAPI.updateTask(props.id, updatedFields);
+                props.refreshTasks();
+              }
             }}
           >
             <CheckIcon />

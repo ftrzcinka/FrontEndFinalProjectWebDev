@@ -16,6 +16,17 @@ async function createEmployee(firstName, lastName, department) {
     });
 }
 
+async function findEmployee(id){
+  const employee = await axios
+  .get(`http://localhost:5000/employee/${id}`)
+  .then((response) => response.data)
+  .catch((err) => {
+    return null
+  })
+
+  return employee;
+}
+
 async function getAllEmployees() {
   const allEmployees = await axios
     .get("http://localhost:5000/employee/all")
@@ -52,6 +63,7 @@ async function updateEmployee(id, updatedFields) {
 const EmployeeAPI = {
   getAllEmployees,
   deleteEmployee,
+  findEmployee,
   createEmployee,
   updateEmployee,
 };

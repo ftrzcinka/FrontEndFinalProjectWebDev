@@ -27,31 +27,6 @@ function Taskpage() {
     refreshTasks();
   }, []);
 
-  // function submitTask(description, priority, completed, employeeId) {
-  //   console.log(description, priority, completed, employeeId);
-  //   axios
-  //     .post("http://localhost:5001/task/create", {
-  //       description: description,
-  //       priority: priority,
-  //       completed: completed,
-  //       employeeId: employeeId || null,
-  //     })
-  //     .then((response) => {
-  //       console.log("Added task");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   const fetchTask = async() => {
-  //     const response = await fetch ('/source')
-  //     const data = await response.json();
-  //     setTask(data);
-  //   }
-  // })
-
   return (
     <div>
       <div
@@ -140,7 +115,6 @@ function Taskpage() {
                   taskEmployeeId={task.employeeId}
                   refreshTasks={refreshTasks}
                 />
-                {console.log(task.employeeId)}
                 <button
                   onClick={async () => {
                     await TaskAPI.deleteTask(task.id);
@@ -148,6 +122,13 @@ function Taskpage() {
                   }}
                 >
                   Delete
+                </button>
+                <button
+                 onClick={async () => {
+                  await TaskAPI.unassignTask(task.id)
+                  refreshTasks();
+                 }}>
+                  Unassign
                 </button>
               </div>
             );
