@@ -129,6 +129,7 @@ function Employeepage() {
                 </button>
                 <br></br>
                 <br></br>
+                <br></br>
                 {tasks.map((task) => {
                   if (task.employeeId === employee.id) {
                     return (
@@ -157,6 +158,8 @@ function Employeepage() {
                         >
                           Unassign Task
                         </button>
+                        <br></br>
+                        <br></br>
                       </div>
                     );
                   }
