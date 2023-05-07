@@ -8,8 +8,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 const classes = {
   cardContainer: {
-    width: "300px",
-    backgroundColor: "#dddddd",
+    width: "400px",
+    backgroundColor: "#eeeeee",
     border: "2px solid #ffc659",
     borderRadius: "4px",
     padding: "1rem",
@@ -81,6 +81,12 @@ function TaskCard(props) {
         )}
       </div>
       <div style={{ display: "flex", gap: "1rem" }}>
+        <TextField
+          value={props.id}
+          variant="standard"
+          label="Task id"
+          disabled={true}
+        />
         <TextField
           value={taskPriority}
           variant="standard"

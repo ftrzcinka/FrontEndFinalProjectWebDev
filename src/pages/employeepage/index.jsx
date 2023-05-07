@@ -5,12 +5,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import EmployeeAPI from "./api";
 import EmployeeCard from "../../components/EmployeeCard";
+import TaskAPI from "../taskpage/api";
+import TaskCard from "../../components/TaskCard";
 
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [department, setDepartment] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -22,10 +25,17 @@ function Employeepage() {
     setEmployees(allEmployees);
   };
 
+  const refreshTasks = async () => {
+    const allTasks = await TaskAPI.getAllTasks();
+    setTasks(allTasks);
+  };
+
   useEffect(() => {
     refreshEmployees();
+    refreshTasks();
   }, []);
 
+  console.log("task data", tasks);
   //probably need to reorganize the output here- create new employee button might be a modal
   return (
     <div>
@@ -115,8 +125,45 @@ function Employeepage() {
                     refreshEmployees();
                   }}
                 >
-                  Delete
+                  Delete User
                 </button>
+                <br></br>
+                <br></br>
+                <br></br>
+                {tasks.map((task) => {
+                  if (task.employeeId === employee.id) {
+                    return (
+                      <div key={task.id}>
+                        <TaskCard
+                          id={task.id}
+                          taskDescription={task.description}
+                          taskPriority={task.priority}
+                          taskCompleted={task.completed}
+                          taskEmployeeId={task.employeeId}
+                          refreshTasks={refreshTasks}
+                        />
+                        <button
+                          onClick={async () => {
+                            await TaskAPI.deleteTask(task.id);
+                            refreshTasks();
+                          }}
+                        >
+                          Delete Task
+                        </button>
+                        <button
+                          onClick={async () => {
+                            await TaskAPI.unassignTask(task.id);
+                            refreshTasks();
+                          }}
+                        >
+                          Unassign Task
+                        </button>
+                        <br></br>
+                        <br></br>
+                      </div>
+                    );
+                  }
+                })}
               </div>
             );
           })
