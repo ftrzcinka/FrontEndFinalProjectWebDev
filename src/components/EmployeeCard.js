@@ -64,6 +64,7 @@ function EmployeeCard(props) {
               };
               await EmployeeAPI.updateEmployee(props.id, updatedFields);
               props.refreshEmployees();
+              props.refreshOneEmployee(props.id);
             }}
           >
             <CheckIcon />

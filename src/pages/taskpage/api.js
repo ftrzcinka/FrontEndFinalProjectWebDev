@@ -32,6 +32,14 @@ async function getAllTasks() {
   return allTasks;
 }
 
+async function getSingleTask(id) {
+  const singleTask = await axios
+    .get(`http://localhost:5000/task/${id}`)
+    .then((response) => response.data);
+  console.log('test', singleTask);
+  return singleTask;
+}
+
 async function deleteTask(id) {
   return axios
     .delete(`http://localhost:5000/task/${id}`)
@@ -71,6 +79,7 @@ async function unassignTask(id) {
 const TaskAPI = {
   createTask,
   getAllTasks,
+  getSingleTask,
   deleteTask,
   updateTask,
   assignTask,
