@@ -7,14 +7,26 @@ import EmployeeAPI from "./api";
 import EmployeeCard from "../../components/EmployeeCard";
 import TaskAPI from "../taskpage/api";
 import TaskCard from "../../components/TaskCard";
+import { useNavigate } from "react-router-dom";
 
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [department, setDepartment] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [employee, setEmployee] = useState();
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleGoEmployeePage = (id) => {
+    navigate(`/employee/${id}`);
+  };
+
+  const handleGoTaskPage = (id) => {
+    navigate(`/task/${id}`);
+  }
 
   const toggleModal = () => {
     setModal(!modal);
@@ -29,6 +41,11 @@ function Employeepage() {
     const allTasks = await TaskAPI.getAllTasks();
     setTasks(allTasks);
   };
+
+  const refreshOneEmployee = async (id) => {
+    const foundEmployee = await EmployeeAPI.findEmployee(id);
+    setEmployee(foundEmployee.employee);
+  }
 
   useEffect(() => {
     refreshEmployees();
@@ -118,6 +135,7 @@ function Employeepage() {
                   lastName={employee.lastname}
                   department={employee.department}
                   refreshEmployees={refreshEmployees}
+                  refreshOneEmployee={() => refreshOneEmployee(employee.id)}
                 />
                 <button
                   onClick={async () => {
@@ -126,6 +144,11 @@ function Employeepage() {
                   }}
                 >
                   Delete User
+                </button>
+                <button
+                  onClick={() => handleGoEmployeePage(employee.id)}
+                >
+                  View Employee
                 </button>
                 <br></br>
                 <br></br>
@@ -157,6 +180,9 @@ function Employeepage() {
                           }}
                         >
                           Unassign Task
+                        </button>
+                        <button onClick={() => handleGoTaskPage(task.id)}>
+                          View Task
                         </button>
                         <br></br>
                         <br></br>

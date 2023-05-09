@@ -1,0 +1,58 @@
+.navContainer {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 140, 0);
+    border-bottom-style: solid;
+    position: fixed;
+    top:0;
+    z-index: 2;
+  }
+
+  .taskContainer {
+    height: 50px;
+    width: 300px;
+    margin: 25px 50px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a7e53d;
+    border-style: solid;
+    font-family: sans-serif;
+  }
+  
+  .taskContainer:hover {
+    animation: pulse 1s infinite ease-in-out;
+    cursor: pointer;
+  }
+  
+  .homeContainer {
+    height: 50px;
+    width: 300px;
+    margin: 25px 0px 0px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a7e53d;
+    border-style: solid;
+    font-family: sans-serif;
+  }
+  
+  .homeContainer:hover {
+    animation: pulse 1s infinite ease-in-out;
+    cursor: pointer;
+  }
+  
+
+  .createEmployeeModal {
+    border-width: 4px;
+    border-color: lime;
+  }
+  
+  .employeeList{
+    display: flex;
+    /* flex-direction: column; */
+    gap:2rem;
+    margin-top: 100px;
+  }

@@ -73,6 +73,7 @@ function TaskCard(props) {
               } else {
                 await TaskAPI.updateTask(props.id, updatedFields);
                 props.refreshTasks();
+                props.getSingleTask(props.id);
               }
             }}
           >
