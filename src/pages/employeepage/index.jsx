@@ -7,6 +7,7 @@ import EmployeeAPI from "./api";
 import EmployeeCard from "../../components/EmployeeCard";
 import TaskAPI from "../taskpage/api";
 import TaskCard from "../../components/TaskCard";
+import Navbar from "../../components/Navbar";
 
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
@@ -39,25 +40,7 @@ function Employeepage() {
   //probably need to reorganize the output here- create new employee button might be a modal
   return (
     <div>
-      <div
-        className={Styles.navContainer}
-        style={{ display: "flex", justifyContent: "space-evenly" }}
-      >
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to="/"
-          className={Styles.homeContainer}
-        >
-          HOMEPAGE
-        </Link>
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to="/tasks"
-          className={Styles.taskContainer}
-        >
-          TASKS
-        </Link>
-      </div>
+      <Navbar />
       <button onClick={toggleModal} style={{ marginTop: "120px" }}>
         Create New Employee
       </button>

@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <div className={Styles.container}>
-      <div className={Styles.brandname}>AquaSlope</div>
+      <img
+        className={Styles.home_image}
+        src="homepagelogo.png"
+        alt="homepagelogo"
+      />
+      <Link style={{ textDecoration: "none", color: "black" }} to="/">
+        <div className={Styles.brandname}>AquaSlope</div>
+      </Link>
+
       <div className={Styles.link_list}>
         <ul className={Styles.page_links}>
           <li className={Styles.link}>About</li>

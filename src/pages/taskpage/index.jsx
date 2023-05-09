@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import TaskAPI from "./api";
 import TaskCard from "../../components/TaskCard";
+import Navbar from "../../components/Navbar";
 
 function Taskpage() {
   const [taskDescription, setTaskDescription] = useState("");
@@ -29,25 +30,7 @@ function Taskpage() {
 
   return (
     <div>
-      <div
-        className={Styles.navContainer}
-        style={{ display: "flex", justifyContent: "space-evenly" }}
-      >
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to="/"
-          className={Styles.homeContainer}
-        >
-          HOMEPAGE
-        </Link>
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to="/employees"
-          className={Styles.employeeContainer}
-        >
-          EMPLOYEES
-        </Link>
-      </div>
+      <Navbar />
       <button onClick={toggleModal}>Create New Task</button>
       {modal && (
         <div className={Styles.createEmployeeModal}>
@@ -124,10 +107,11 @@ function Taskpage() {
                   Delete
                 </button>
                 <button
-                 onClick={async () => {
-                  await TaskAPI.unassignTask(task.id)
-                  refreshTasks();
-                 }}>
+                  onClick={async () => {
+                    await TaskAPI.unassignTask(task.id);
+                    refreshTasks();
+                  }}
+                >
                   Unassign
                 </button>
               </div>
