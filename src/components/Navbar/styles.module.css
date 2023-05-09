@@ -25,7 +25,7 @@
   list-style-type: none;
   gap: 15px;
   margin: 0px;
-  padding-bottom: 10px;
+  padding-top: 10px;
   font-family: "Montserrat", sans-serif;
 }
 .app_links {
@@ -52,67 +52,8 @@
   background-color: rgb(245, 172, 83);
 }
 
-.navContainer {
-  width: 100vw;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  background-color: rgb(255, 140, 0);
-  border-bottom-style: solid;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.taskContainer {
-  height: 50px;
-  width: 300px;
-  margin: 25px 50px 0px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a7e53d;
-  border-style: solid;
-  font-family: sans-serif;
-}
-
-.taskContainer:hover {
-  animation: pulse 1s infinite ease-in-out;
-  cursor: pointer;
-}
-
-.employeesContainer {
-  height: 50px;
-  width: 300px;
-  margin: 25px 0px 0px 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a7e53d;
-  border-style: solid;
-  font-family: sans-serif;
-}
-
-.employeesContainer:hover {
-  animation: pulse 1s infinite ease-in-out;
-  cursor: pointer;
-}
-
-.boxNavContainer {
-  width: 100vw;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.home_image {
+  width: 50px;
+  height: 60px;
+  padding: 0px 10px 0px 10px;
 }
