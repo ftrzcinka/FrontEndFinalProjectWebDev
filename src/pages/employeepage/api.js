@@ -1,8 +1,9 @@
 import axios from "axios";
+import config from "../../config.json"
 
 async function createEmployee(firstName, lastName, department) {
   return axios
-    .post("https://webdev-final-employeetasks.herokuapp.com/employee/create", {
+    .post(config.server_url + "/employee/create", {
       firstname: firstName,
       lastname: lastName,
       department: department,
@@ -18,7 +19,7 @@ async function createEmployee(firstName, lastName, department) {
 
 async function findEmployee(id){
   const employee = await axios
-  .get(`https://webdev-final-employeetasks.herokuapp.com/employee/${id}`)
+  .get(config.server_url + `/employee/${id}`)
   .then((response) => response.data)
   .catch((err) => {
     return null
@@ -29,7 +30,7 @@ async function findEmployee(id){
 
 async function getAllEmployees() {
   const allEmployees = await axios
-    .get("https://webdev-final-employeetasks.herokuapp.com/employee/all")
+    .get(config.server_url + "/employee/all")
     .then((response) => response.data);
 
   console.log(allEmployees);
@@ -39,7 +40,7 @@ async function getAllEmployees() {
 
 async function deleteEmployee(id) {
   return axios
-    .delete(`https://webdev-final-employeetasks.herokuapp.com/employee/${id}`)
+    .delete(config.server_url + `/employee/${id}`)
     .then((response) => {
       console.log("Deleted employee");
       return response.data;
@@ -51,7 +52,7 @@ async function deleteEmployee(id) {
 
 async function updateEmployee(id, updatedFields) {
   return axios
-  .put(`https://webdev-final-employeetasks.herokuapp.com/employee/${id}`, updatedFields)
+  .put(config.server_url + `/employee/${id}`, updatedFields)
   .then((response) => {
     console.log("Updated employee");
   })
