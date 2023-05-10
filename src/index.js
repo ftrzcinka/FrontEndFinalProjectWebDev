@@ -7,6 +7,8 @@ import Taskpage from "./pages/taskpage";
 import Employeepage from "./pages/employeepage";
 import SingleEmployee from "./pages/singleEmployee";
 import SingleTask from "./pages/singleTask";
+import Aboutpage from "./pages/aboutpage";
+import Contactpage from "./pages/contactpage";
 
 // Add an object to the array for more routes
 const router = createBrowserRouter([
@@ -15,6 +17,8 @@ const router = createBrowserRouter([
   { path: "/employees", element: <Employeepage /> },
   { path: "/employee/:id", element: <SingleEmployee /> },
   { path: "/task/:id", element: <SingleTask /> },
+  { path: "/about", element: <Aboutpage /> },
+  { path: "/contact", element: <Contactpage /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
