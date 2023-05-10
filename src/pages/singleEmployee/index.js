@@ -31,6 +31,10 @@ export default function SingleEmployee() {
     navigate(`/FrontEndFinalProjectWebDev/task/${id}`);
   };
 
+  const handleGoEmployeePage = (id) => {
+    navigate(`/FrontEndFinalProjectWebDev/employee/${id}`);
+  };
+
   const refreshEmployees = async () => {
     const allEmployees = await EmployeeAPI.getAllEmployees();
     setEmployees(allEmployees);
@@ -65,7 +69,7 @@ export default function SingleEmployee() {
                 await EmployeeAPI.deleteEmployee(employee.id);
                 refreshEmployees(employee.id);
                 refreshOneEmployee(employee.id);
-                window.location.reload(false);
+                navigate(`/FrontEndFinalProjectWebDev/employees`);
               }}
             >
               Delete User
@@ -93,7 +97,7 @@ export default function SingleEmployee() {
                       onClick={async () => {
                         await TaskAPI.deleteTask(task.id);
                         refreshTasks();
-                        window.location.reload(false);
+                        handleGoEmployeePage(employee.id)
                       }}
                     >
                       Delete Task
@@ -102,7 +106,7 @@ export default function SingleEmployee() {
                       onClick={async () => {
                         await TaskAPI.unassignTask(task.id);
                         refreshTasks();
-                        window.location.reload(false);
+                        handleGoEmployeePage(employee.id)
                       }}
                     >
                       Unassign Task
