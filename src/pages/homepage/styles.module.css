@@ -10,7 +10,7 @@
   overflow: hidden;
   object-fit: contain;
   position: absolute;
-  top: -500px;
+  top: -200px;
   left: 0px;
   z-index: -1;
 }
@@ -61,7 +61,7 @@
   display: flex;
   gap: 100px;
   justify-content: center;
-  margin-top: 700px;
+  margin-top: 250px;
   cursor: pointer;
   padding: 8px 16px;
   outline: none;
