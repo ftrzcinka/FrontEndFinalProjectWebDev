@@ -7,7 +7,7 @@ async function createTask(
   taskEmployeeId
 ) {
   return axios
-    .post("http://localhost:5000/task/create", {
+    .post("https://webdev-final-employeetasks.herokuapp.com/task/create", {
       description: taskDescription,
       priority: taskPriority,
       completed: taskCompleted,
@@ -24,7 +24,7 @@ async function createTask(
 
 async function getAllTasks() {
   const allTasks = await axios
-    .get("http://localhost:5000/task/all")
+    .get("https://webdev-final-employeetasks.herokuapp.com/task/all")
     .then((response) => response.data);
 
   console.log(allTasks);
@@ -34,7 +34,7 @@ async function getAllTasks() {
 
 async function getSingleTask(id) {
   const singleTask = await axios
-    .get(`http://localhost:5000/task/${id}`)
+    .get(`https://webdev-final-employeetasks.herokuapp.com/task/${id}`)
     .then((response) => response.data);
   console.log('test', singleTask);
   return singleTask;
@@ -42,7 +42,7 @@ async function getSingleTask(id) {
 
 async function deleteTask(id) {
   return axios
-    .delete(`http://localhost:5000/task/${id}`)
+    .delete(`https://webdev-final-employeetasks.herokuapp.com/task/${id}`)
     .then((response) => {
       console.log("Deleted task");
       return response.data;
@@ -54,7 +54,7 @@ async function deleteTask(id) {
 
 async function updateTask(id, updatedFields) {
   return axios
-    .put(`http://localhost:5000/task/update/${id}`, updatedFields)
+    .put(`https://webdev-final-employeetasks.herokuapp.com/task/update/${id}`, updatedFields)
     .then((response) => {
       console.log("Updated task");
     })
@@ -67,7 +67,7 @@ async function assignTask() {}
 
 async function unassignTask(id) {
   return axios
-    .put(`http://localhost:5000/task/unassign/${id}`)
+    .put(`https://webdev-final-employeetasks.herokuapp.com/task/unassign/${id}`)
     .then((response) => {
       console.log("Task unassigned");
     })
