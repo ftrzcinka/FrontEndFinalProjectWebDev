@@ -12,13 +12,13 @@ import Contactpage from "./pages/contactpage";
 
 // Add an object to the array for more routes
 const router = createBrowserRouter([
-  { path: "/", element: <Homepage /> },
-  { path: "/tasks", element: <Taskpage /> },
-  { path: "/employees", element: <Employeepage /> },
-  { path: "/employee/:id", element: <SingleEmployee /> },
-  { path: "/task/:id", element: <SingleTask /> },
-  { path: "/about", element: <Aboutpage /> },
-  { path: "/contact", element: <Contactpage /> },
+  { path: "/FrontEndFinalProjectWebDev", element: <Homepage /> },
+  { path: "/FrontEndFinalProjectWebDev/tasks", element: <Taskpage /> },
+  { path: "/FrontEndFinalProjectWebDev/employees", element: <Employeepage /> },
+  { path: "/FrontEndFinalProjectWebDev/employee/:id", element: <SingleEmployee /> },
+  { path: "/FrontEndFinalProjectWebDev/task/:id", element: <SingleTask /> },
+  { path: "/FrontEndFinalProjectWebDev/about", element: <Aboutpage /> },
+  { path: "/FrontEndFinalProjectWebDev/contact", element: <Contactpage /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
