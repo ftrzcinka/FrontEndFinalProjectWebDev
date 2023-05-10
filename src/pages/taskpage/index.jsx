@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import TaskAPI from "./api";
 import TaskCard from "../../components/TaskCard";
 import Navbar from "../../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Taskpage() {
   const [taskDescription, setTaskDescription] = useState("");
@@ -14,6 +15,17 @@ function Taskpage() {
   const [taskEmployeeId, setTaskEmployeeId] = useState();
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
+
+  const getSingleTask = async (id) => {
+    const foundTask = await TaskAPI.getSingleTask(id);
+    setTask(foundTask);
+  };
+
+  const navigate = useNavigate();
+
+  const handleGoTaskPage = (id) => {
+    navigate(`/task/${id}`);
+  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -97,6 +109,7 @@ function Taskpage() {
                   taskCompleted={task.completed}
                   taskEmployeeId={task.employeeId}
                   refreshTasks={refreshTasks}
+                  getSingleTask={getSingleTask}
                 />
                 <button
                   onClick={async () => {
@@ -114,6 +127,9 @@ function Taskpage() {
                 >
                   Unassign
                 </button>
+                <button onClick={() => handleGoTaskPage(task.id)}>
+                      View Task
+                    </button>
               </div>
             );
           })
