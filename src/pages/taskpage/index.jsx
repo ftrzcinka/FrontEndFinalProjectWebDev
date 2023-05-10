@@ -24,7 +24,7 @@ function Taskpage() {
   const navigate = useNavigate();
 
   const handleGoTaskPage = (id) => {
-    navigate(`/task/${id}`);
+    navigate(`/FrontEndFinalProjectWebDev/task/${id}`);
   };
 
   const toggleModal = () => {

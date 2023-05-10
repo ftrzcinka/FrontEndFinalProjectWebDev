@@ -20,7 +20,7 @@ function Navbar() {
             <li className={Styles.link}>About</li>
           </Link>
           <Link
-            to="/FrontEndFinalProjectWebDev/scontact"
+            to="/FrontEndFinalProjectWebDev/contact"
             style={{ textDecoration: "none", color: "black" }}
           >
             <li className={Styles.link}> Contact</li>

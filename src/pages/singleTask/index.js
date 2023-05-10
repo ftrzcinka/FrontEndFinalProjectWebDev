@@ -17,7 +17,7 @@ export default function SingleTask() {
   const navigate = useNavigate();
 
   const handleGoEmployeePage = (id) => {
-    navigate(`/employee/${id}`);
+    navigate(`/FrontEndFinalProjectWebDev/employee/${id}`);
   };
 
   const getSingleTask = async (id) => {
