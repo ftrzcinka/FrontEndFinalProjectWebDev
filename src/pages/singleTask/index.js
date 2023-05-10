@@ -7,7 +7,6 @@ import Styles from "./styles.module.css";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-
 export default function SingleTask() {
   const [employee, setEmployee] = useState();
   const [task, setTask] = useState();
