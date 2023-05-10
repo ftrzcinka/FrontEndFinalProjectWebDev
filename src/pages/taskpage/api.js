@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "../../config.json"
 
 async function createTask(
   taskDescription,
@@ -7,7 +8,7 @@ async function createTask(
   taskEmployeeId
 ) {
   return axios
-    .post("http://localhost:5000/task/create", {
+    .post(config.server_url + "/task/create", {
       description: taskDescription,
       priority: taskPriority,
       completed: taskCompleted,
@@ -24,7 +25,7 @@ async function createTask(
 
 async function getAllTasks() {
   const allTasks = await axios
-    .get("http://localhost:5000/task/all")
+    .get(config.server_url + "/task/all")
     .then((response) => response.data);
 
   console.log(allTasks);
@@ -34,7 +35,7 @@ async function getAllTasks() {
 
 async function getSingleTask(id) {
   const singleTask = await axios
-    .get(`http://localhost:5000/task/${id}`)
+    .get(config.server_url + `/task/${id}`)
     .then((response) => response.data);
   console.log('test', singleTask);
   return singleTask;
@@ -42,7 +43,7 @@ async function getSingleTask(id) {
 
 async function deleteTask(id) {
   return axios
-    .delete(`http://localhost:5000/task/${id}`)
+    .delete(config.server_url + `/task/${id}`)
     .then((response) => {
       console.log("Deleted task");
       return response.data;
@@ -54,7 +55,7 @@ async function deleteTask(id) {
 
 async function updateTask(id, updatedFields) {
   return axios
-    .put(`http://localhost:5000/task/update/${id}`, updatedFields)
+    .put(config.server_url + `/task/update/${id}`, updatedFields)
     .then((response) => {
       console.log("Updated task");
     })
@@ -67,7 +68,7 @@ async function assignTask() {}
 
 async function unassignTask(id) {
   return axios
-    .put(`http://localhost:5000/task/unassign/${id}`)
+    .put(config.server_url + `/task/unassign/${id}`)
     .then((response) => {
       console.log("Task unassigned");
     })
