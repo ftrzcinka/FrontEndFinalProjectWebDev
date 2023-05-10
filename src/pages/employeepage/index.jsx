@@ -23,11 +23,11 @@ function Employeepage() {
   const navigate = useNavigate();
 
   const handleGoEmployeePage = (id) => {
-    navigate(`/employee/${id}`);
+    navigate(`/FrontEndFinalProjectWebDev/employee/${id}`);
   };
 
   const handleGoTaskPage = (id) => {
-    navigate(`/task/${id}`);
+    navigate(`/FrontEndFinalProjectWebDev/task/${id}`);
   }
 
   const toggleModal = () => {

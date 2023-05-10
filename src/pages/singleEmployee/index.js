@@ -28,7 +28,7 @@ export default function SingleEmployee() {
   const navigate = useNavigate();
 
   const handleGoTaskPage = (id) => {
-    navigate(`/task/${id}`);
+    navigate(`/FrontEndFinalProjectWebDev/task/${id}`);
   };
 
   const refreshEmployees = async () => {

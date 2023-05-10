@@ -10,28 +10,28 @@ function Navbar() {
         src="homepagelogo.png"
         alt="homepagelogo"
       />
-      <Link style={{ textDecoration: "none", color: "black" }} to="/">
+      <Link style={{ textDecoration: "none", color: "black" }} to="/FrontEndFinalProjectWebDev">
         <div className={Styles.brandname}>AquaSlope</div>
       </Link>
 
       <div className={Styles.link_list}>
         <ul className={Styles.page_links}>
-          <Link to="/about" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/FrontEndFinalProjectWebDev/about" style={{ textDecoration: "none", color: "black" }}>
             <li className={Styles.link}>About</li>
           </Link>
           <Link
-            to="/contact"
+            to="/FrontEndFinalProjectWebDev/contact"
             style={{ textDecoration: "none", color: "black" }}
           >
             <li className={Styles.link}> Contact</li>
           </Link>
         </ul>
         <ul className={Styles.app_links}>
-          <Link to="/tasks" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/FrontEndFinalProjectWebDev/tasks" style={{ textDecoration: "none", color: "black" }}>
             <li className={Styles.link}>Tasks</li>
           </Link>
           <Link
-            to="/employees"
+            to="/FrontEndFinalProjectWebDev/employees"
             style={{ textDecoration: "none", color: "black" }}
           >
             <li className={Styles.link}>Employees</li>
