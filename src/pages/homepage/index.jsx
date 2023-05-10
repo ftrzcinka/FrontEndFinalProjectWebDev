@@ -18,13 +18,13 @@ function Homepage() {
           <button className={Styles.button}>Apply</button>
         </div>
         <div className={Styles.button_container}>
-          <Link to="/tasks" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/FrontEndFinalProjectWebDev/tasks" style={{ textDecoration: "none", color: "black" }}>
             <div className={Styles.tasks_button}>
               <p className={Styles.text}>Tasks</p>
             </div>
           </Link>
           <Link
-            to="/employees"
+            to="/FrontEndFinalProjectWebDev/employees"
             style={{ textDecoration: "none", color: "black" }}
           >
             <div className={Styles.employees_button}>
