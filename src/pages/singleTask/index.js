@@ -20,6 +20,10 @@ export default function SingleTask() {
     navigate(`/FrontEndFinalProjectWebDev/employee/${id}`);
   };
 
+  const handleGoTaskPage = (id) => {
+    navigate(`/FrontEndFinalProjectWebDev/task/${id}`);
+  };
+
   const getSingleTask = async (id) => {
     const foundTask = await TaskAPI.getSingleTask(id);
     setTask(foundTask);
@@ -55,7 +59,7 @@ export default function SingleTask() {
                 await TaskAPI.deleteTask(task.id);
                 refreshTasks();
                 getSingleTask(task.id);
-                window.location.reload(false);
+                navigate(`/FrontEndFinalProjectWebDev/tasks`);
               }}
             >
               Delete
@@ -65,7 +69,6 @@ export default function SingleTask() {
                 await TaskAPI.unassignTask(task.id);
                 refreshTasks();
                 getSingleTask(task.id);
-                window.location.reload(false);
               }}
             >
               Unassign
