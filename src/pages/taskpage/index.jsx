@@ -19,7 +19,8 @@ function Taskpage() {
 
   const getSingleTask = async (id) => {
     const foundTask = await TaskAPI.getSingleTask(id);
-    setTask(foundTask);
+    setTasks(foundTask);
+    refreshTasks();
   };
 
   const navigate = useNavigate();
@@ -126,7 +127,7 @@ function Taskpage() {
                 <button className={Styles.taskButton}
                   onClick={async () => {
                     await TaskAPI.unassignTask(task.id);
-                    refreshTasks();
+                    getSingleTask(task.id);
                   }}
                 >
                   Unassign
