@@ -9,7 +9,7 @@ import TaskAPI from "../taskpage/api";
 import TaskCard from "../../components/TaskCard";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
-
+import Background from "../../images/background.png";
 
 function Employeepage() {
   const [firstName, setFirstName] = useState("");
@@ -59,55 +59,57 @@ function Employeepage() {
   return (
     <div>
       <Navbar />
-      <button onClick={toggleModal} style={{ marginTop: "120px" }}>
-        Create New Employee
-      </button>
-      {modal && (
-        <div className={Styles.createEmployeeModal}>
-          <div>
-            <header>
-              <h2>Add a New Employee!</h2>
-            </header>
-            <body>
-              <form>
-                <TextField
-                  label="First Name"
-                  variant="outlined"
-                  onChange={(event) => setFirstName(event.target.value)}
-                />
-                <br></br>
-                <TextField
-                  label="Last Name"
-                  variant="outlined"
-                  onChange={(event) => setLastName(event.target.value)}
-                />
-                <br></br>
-                <TextField
-                  label="Department"
-                  variant="outlined"
-                  onChange={(event) => setDepartment(event.target.value)}
-                />
-                <br></br>
-                <Button
-                  variant="text"
-                  onClick={async () => {
-                    await EmployeeAPI.createEmployee(
-                      firstName,
-                      lastName,
-                      department
-                    );
-                    refreshEmployees();
-                  }}
-                >
-                  Submit
-                </Button>
-              </form>
-            </body>
+      <img className={Styles.background_img} src={Background} /> 
+      <div className={Styles.miniHeaderButtons}>
+        <button className={Styles.employeeButton} onClick={toggleModal} >
+          Create New Employee
+        </button>
+        {modal && (
+          <div className={Styles.createEmployeeModal}>
+            <div>
+              <header>
+                <h2>Add a New Employee!</h2>
+              </header>
+              <body>
+                <form >
+                  <TextField className={Styles.formModal}
+                    label="First Name"
+                    variant="outlined"
+                    onChange={(event) => setFirstName(event.target.value)}
+                  />
+                  <br></br>
+                  <TextField className={Styles.formModal}
+                    label="Last Name"
+                    variant="outlined"
+                    onChange={(event) => setLastName(event.target.value)}
+                  />
+                  <br></br>
+                  <TextField className={Styles.formModal}
+                    label="Department"
+                    variant="outlined"
+                    onChange={(event) => setDepartment(event.target.value)}
+                  />
+                  <br></br>
+                  <Button
+                    variant="text"
+                    onClick={async () => {
+                      await EmployeeAPI.createEmployee(
+                        firstName,
+                        lastName,
+                        department
+                      );
+                      refreshEmployees();
+                    }}
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </body>
+            </div>
           </div>
-        </div>
-      )}
-      <Button onClick={() => refreshEmployees()}>get All Employees</Button>
-
+        )}
+        <button className={Styles.employeeButton} onClick={() => refreshEmployees()}>Get All Employees</button>
+      </div>
       <div className={Styles.employeeList}>
         {employees.length ? (
           employees.map((employee) => {
@@ -121,7 +123,7 @@ function Employeepage() {
                   refreshEmployees={refreshEmployees}
                   refreshOneEmployee={() => refreshOneEmployee(employee.id)}
                 />
-                <button
+                <button className={Styles.employeeButton}
                   onClick={async () => {
                     await EmployeeAPI.deleteEmployee(employee.id);
                     refreshEmployees();
@@ -129,7 +131,7 @@ function Employeepage() {
                 >
                   Delete User
                 </button>
-                <button
+                <button className={Styles.employeeButton}
                   onClick={() => handleGoEmployeePage(employee.id)}
                 >
                   View Employee
@@ -149,7 +151,7 @@ function Employeepage() {
                           taskEmployeeId={task.employeeId}
                           refreshTasks={refreshTasks}
                         />
-                        <button
+                        <button className={Styles.employeeButton}
                           onClick={async () => {
                             await TaskAPI.deleteTask(task.id);
                             refreshTasks();
@@ -157,7 +159,7 @@ function Employeepage() {
                         >
                           Delete Task
                         </button>
-                        <button
+                        <button className={Styles.employeeButton}
                           onClick={async () => {
                             await TaskAPI.unassignTask(task.id);
                             refreshTasks();
@@ -165,7 +167,7 @@ function Employeepage() {
                         >
                           Unassign Task
                         </button>
-                        <button onClick={() => handleGoTaskPage(task.id)}>
+                        <button className={Styles.employeeButton} onClick={() => handleGoTaskPage(task.id)}>
                           View Task
                         </button>
                         <br></br>
