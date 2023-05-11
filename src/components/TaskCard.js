@@ -66,16 +66,24 @@ function TaskCard(props) {
                 completed: taskCompleted,
                 employeeId: taskEmployeeId,
               };
-              const employee = await EmployeeAPI.findEmployee(taskEmployeeId);
-              if (!employee) {
-                editModeOff();
-                alert("Invalid Emp ID");
-              } else {
-                await TaskAPI.updateTask(props.id, updatedFields);
-                props.refreshTasks();
-                props.getSingleTask(props.id);
-              }
-            }}
+
+              if (taskEmployeeId !== null) {
+                const employee = await EmployeeAPI.findEmployee(taskEmployeeId);
+                if (!employee) {
+                  editModeOff();
+                  alert("Invalid Emp ID");
+                  props.employeeId = null;
+                } else {
+                  await TaskAPI.updateTask(props.id, updatedFields);
+                  props.refreshTasks();
+                  props.getSingleTask(props.id);
+                }
+              }else{
+
+              await TaskAPI.updateTask(props.id, updatedFields);
+              props.refreshTasks();
+              props.getSingleTask(props.id);
+            }}}
           >
             <CheckIcon />
           </IconButton>
