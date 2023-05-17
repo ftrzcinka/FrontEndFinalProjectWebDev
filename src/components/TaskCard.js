@@ -23,6 +23,7 @@ function TaskCard(props) {
   const [taskCompleted, setTaskCompleted] = useState(props.taskCompleted);
   const [taskEmployeeId, setTaskEmployeeId] = useState(props.taskEmployeeId);
   const [editMode, setEditMode] = useState(false);
+  
 
   function editModeOn() {
     setEditMode(true);
@@ -66,13 +67,14 @@ function TaskCard(props) {
                 completed: taskCompleted,
                 employeeId: taskEmployeeId,
               };
-
+              
               if (taskEmployeeId !== null) {
                 const employee = await EmployeeAPI.findEmployee(taskEmployeeId);
                 if (!employee) {
                   editModeOff();
                   alert("Invalid Emp ID");
-                  props.employeeId = null;
+                  props.refreshTasks();
+                  props.getSingleTask(props.id);
                 } else {
                   await TaskAPI.updateTask(props.id, updatedFields);
                   props.refreshTasks();
