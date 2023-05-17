@@ -2,7 +2,7 @@
 
 Group Members:
 - Omer Skaljic
-- Josiel
+- Josiel Perez
 - Justin
 - Filip Trzcinka
 
