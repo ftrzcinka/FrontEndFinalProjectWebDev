@@ -49,8 +49,6 @@ export default function SingleEmployee() {
     refreshOneEmployee(id);
     refreshTasks();
   }, []);
-  
-  var counter = 0;
 
   return (
     <div>
@@ -84,7 +82,6 @@ export default function SingleEmployee() {
             <br></br>
             {tasks.map((task) => {
               if (task.employeeId === employee.id) {
-                counter += 1;
                 return (
                   <div key={task.id}>
                     <TaskCard
@@ -122,10 +119,7 @@ export default function SingleEmployee() {
                   </div>
                 );
               }
-              if (counter === 0){
-                alert(`No tasks found for employee ${employee.id}!`);
-              }
-              counter = 0;
+              
             })}
           </div>
         )}
