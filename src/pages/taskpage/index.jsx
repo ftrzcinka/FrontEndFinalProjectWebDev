@@ -53,7 +53,7 @@ function Taskpage() {
           <div className={Styles.createEmployeeModal}>
             <div>
               <header>
-                <h2>Add a New Employee!</h2>
+                <h2>Add a New Task!</h2>
               </header>
               <body>
                 <form>
